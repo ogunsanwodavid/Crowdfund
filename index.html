@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-----------Important meta tags----------->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Junior Frontend Mentor Challenge to build a crowfunding product page">
+    <meta property="og:description" content="Junior Frontend Mentor Challenge to build a crowfunding product page">
+    <meta name="author" content="Ogunsanwo David Oluwadamilare">
+    <meta property="og:author" content="Ogunsanwo David Oluwadamilare">
+    <meta property="og:image" content="https://github.com/ogunsanwodavid/FYLO/assets/images/favicon-32x32.png">
+    <meta property="og:title" content="Crowdfund">
+
+    <!-----------Title---------->
+    <title>Crowdfund</title>
+
+    <!------------Favicon------------->
+    <link rel="shortcut icon" href="./assets/images/favicon-32x32.png" type="image/x-icon">
+
+    <!-------Linked stylesheets, fonts, icons and libraries------------>
+    <link rel="stylesheet" href="./dist/output.css">
+
+    <!----------Fontawesome icons---------->
+
+    
+    <!--------Google Fonts----------->
+    
+
+    <!--Added Styles-->
+    <style>
+        @font-face {
+            font-family: 'Commissioner';
+            src: url('./assets/fonts/Commissioner/Commissioner-VariableFont_FLAR\,VOLM\,slnt\,wght.ttf') format('truetype'),
+            url('./assets/fonts/Commissioner/OFL.txt') format('woff')
+        }
+
+        header{
+            background-image: url(./assets/images/image-hero-mobile.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+
+        button,input{
+            cursor: pointer;
+        }
+
+        @media (min-width: 700px) {
+            header{
+                background-image: url(./assets/images/image-hero-desktop.jpg);
+            }
+        }
+    </style>
+
+</head>
+
+<body class="relative font-commissioner">
+    <!--Header section-->
+    <header class="w-full px-8 py-10 h-[270px] md:px-[10%] md:py-12 md:h-[320px]">
+        <!--Navigation bar-->
+        <nav class="w-full flex justify-between items-center md:flex" id="main-nav">
+            <img src="./assets/images/logo.svg" alt="logo" class="h-5 md:h-6 cursor-pointer">
+            <img src="./assets/images/icon-hamburger.svg" alt="icon-hamburger" class="h-4 md:hidden cursor-pointer" id="hamburger">
+
+            <ul class="hidden text-base text-white font-[500] space-x-8 md:flex lg:space-x-12">
+                <li class="hover:opacity-70 cursor-pointer">About</li>
+                <li class="hover:opacity-70 cursor-pointer">Discover</li>
+                <li class="hover:opacity-70 cursor-pointer">Get Started</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Hidden Nav-->
+    <section class="hidden fixed w-[100vw] h-[100vh] left-0 top-0 z-10 bg-[rgba(0,0,0,0.4)] md:hidden" id="hidden-nav">
+        <div class="mt-[2.5rem] mx-8 flex flex-col" style="width: calc(100% - 4rem)">
+            <nav class="w-full flex justify-between items-center">
+                <img src="./assets/images/logo.svg" alt="logo" class="h-5">
+                <img src="./assets/images/icon-close-menu.svg" alt="icon-close-menu" class="h-4" id="icon-close">
+            </nav>
+
+            <div class="bg-white rounded-lg mt-6">
+                <div class="w-full text-black text-[0.9rem] font-[500] border-b-[1px] border-[rgba(0,0,0,0.15)]" ><span class="inline-block ml-4 my-4">About</span></div>
+                <div class="w-full text-black text-[0.9rem] font-[500] border-b-[1px] border-[rgba(0,0,0,0.15)]" ><span class="inline-block ml-4 my-4">Discover</span></div>
+                <div class="w-full text-black text-[0.9rem] font-[500]" ><span class="inline-block ml-4 my-4">Get Started</span></div>
+            </div>
+        </div>
+    </section>
+    <!--Hidden Nav ends-->
+
+    <!--Script for hidden navigation-->
+    <script>
+        mainNav = document.getElementById("main-nav")
+        hiddenNav = document.getElementById("hidden-nav")
+        hambg = document.getElementById("hamburger")
+        iconClose = document.getElementById("icon-close")
+
+        hambg.addEventListener("click" , ()=>{
+            mainNav.classList.remove("flex")
+            mainNav.classList.add("hidden")
+            hiddenNav.classList.remove("hidden")
+            hiddenNav.classList.add("flex")
+        })
+
+        iconClose.addEventListener("click" , ()=>{
+            mainNav.classList.remove("hidden")
+            mainNav.classList.add("flex")
+            hiddenNav.classList.remove("flex")
+            hiddenNav.classList.add("hidden")
+        })
+    </script>
+    <!--Script for hidden navigation-->
+
+    <section class="w-full bg-white px-8 py-0 space-y-6">
+        <!-- Div translated up into the header -->
+        <div class="w-full bg-white flex flex-col items-center px-6 pb-10 rounded-xl -translate-y-14 md:w-[70%] md:mx-auto lg:w-[50%]" style="box-shadow: 0 2px 3px rgba(0,0,0,0.1);">
+            <img src="./assets/images/logo-mastercraft.svg" alt="" class="h-14 -translate-y-1/2">
+
+            <div class="text-center text-black text-xl font-[700] mb-5">Mastercraft Bamboo Monitor Riser</div>
+
+            <p class="text-center text-dark-gray text-[0.9rem] font-[500] mb-5">A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
+
+            <div class="w-full flex justify-between space-x-3">
+                <button class="w-[100%] text-white text-base bg-moderate-cyan font-[500] rounded-full hover:bg-dark-cyan md:w-[180px]" id="back-this-project">Back this project</button>
+
+                <div class="unmarked flex items-center h-[3.2rem] bg-gray-200 rounded-full md:w-[180px] md:space-x-3 cursor-pointer"  id="bookmark-btn">
+                    <img src="./assets/images/icon-bookmark.svg" alt="" id="bookmark-logo">
+
+                    <p class="hidden text-dark-gray text-base font-[700] md:block" id="bookmark-text">Bookmark</p>
+                </div>
+
+                <!--Script for bookmark button-->
+                <script>
+                    const bookmarkBtn = document.getElementById("bookmark-btn")
+                    const bookmarkLogo = document.getElementById("bookmark-logo")
+                    const bookmarkText = document.getElementById("bookmark-text")
+
+                    //This eventlistener listens to a click and 
+                    //changes the image source of the bookmark button
+                    //changes the content of the bookmark button
+                    //reverss the changes when clicked again
+                    bookmarkBtn.addEventListener("click" , ()=> {
+                        if(bookmarkBtn.classList.contains("unmarked")){
+                            //change bookmark button classname
+                            bookmarkBtn.classList.remove("unmarked")
+                            bookmarkBtn.classList.add("marked")
+
+                            //change source of bookmark logo
+                            bookmarkLogo.src = "./assets/images/icon-bookmarked.svg"
+
+                            //change text display
+                            bookmarkText.innerHTML = "Bookmarked"
+                            bookmarkText.classList.remove("text-dark-gray")
+                            bookmarkText.classList.add("text-dark-cyan")
+                        }else if(bookmarkBtn.classList.contains("marked")){
+                            //reverse all changes when clicked again 
+                            bookmarkBtn.classList.remove("marked")
+                            bookmarkBtn.classList.add("unmarked")
+
+                            bookmarkLogo.src = "./assets/images/icon-bookmark.svg"
+
+                            bookmarkText.innerHTML = "Bookmark"
+                            bookmarkText.classList.add("text-dark-gray")
+                            bookmarkText.classList.remove("text-dark-cyan")
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+
+        <!-- Div that contains statistics-->
+        <div class="w-full bg-white flex flex-col items-center px-6 py-6 pb-10 rounded-xl -translate-y-14 md:w-[70%] md:mx-auto lg:w-[50%]" style="box-shadow: 1px 1px 1px 2px rgba(0,0,0,0.1);">
+
+            <!--Main Stats div-->
+            <div class="w-full flex flex-col space-y-6 md:flex-row md:justify-between md:space-y-0">
+                <div class="flex flex-col items-center md:w-[100%] md:border-r-[1.5px] md:border-[rgba(0,0,0,0.15)] md:space-y-2 md:items-start">
+                    <div class="text-black text-4xl font-[700] mb-3 md:mb-0">$89,914</div>
+                    <p class="text-dark-gray text-[0.9rem] font-[500] mb-6 md:mb-0">of $100,000 backed</p>
+
+                    <!--Underline div-->
+                    <div class="h-[1.2px] w-[65px] bg-gray-300 md:hidden"></div>
+                </div>
+
+                <div class="flex flex-col items-center md:w-[100%]  md:border-r-[1.5px] md:border-[rgba(0,0,0,0.15)] md:space-y-2">
+                    <div class="text-black text-4xl font-[700] mb-3 md:mb-0">5,007</div>
+                    <p class="text-dark-gray text-[0.9rem] font-[500] mb-6 md:mb-0">total backers</p>
+
+                    <!--Underline div-->
+                    <div class="h-[1.2px] w-[65px] bg-gray-300 md:hidden"></div>
+                </div>
+
+                <div class="flex flex-col items-center md:w-[100%]">
+                    <div class="text-black text-4xl font-[700] mb-3 md:mb-0">56</div>
+                    <p class="text-dark-gray text-[0.9rem] font-[500] mb-6 md:mb-0">days left</p>
+                </div>
+            </div>
+
+            <!--Progress bar-->
+            <div class="w-full h-3 rounded-full bg-gray-200 mt-6 overflow-hidden">
+                <div class="w-[89.914%] h-full bg-moderate-cyan rounded-full"></div>
+            </div>
+        </div>
+
+        <!--About this project section-->
+        <div class="w-full bg-white flex flex-col px-7 pt-8 pb-10 rounded-xl -translate-y-14 space-y-6 md:w-[70%] md:mx-auto lg:w-[50%]" style="box-shadow: 1px 1px 1px 2px rgba(0,0,0,0.1);">
+            <h2 class="text-black text-xl font-[700]">About this Project</h2>
+
+            <p class="text-dark-gray text-[0.95rem] font-[500]" style="line-height: 1.6;">The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform that elevates your screen to a more comfortable viewing height. Placing your monitor at eye level has the potential to improve our posture and make you more comfortable while at work, helping you stay focused on the task at hand.</p>
+
+            <p class="text-dark-gray text-[0.95rem] font-[500]" style="line-height: 1.6;">Featuring artisan craftsmanship, the simplicity of design creates extra desk space below your computer to allow notepads, pens, and USB sticks to be stored under the stand.</p>
+
+            <!--Bamboo stand section-->
+            <div class="w-full flex flex-col p-6 border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg">
+                <div class="w-full flex flex-col md:flex-row md:justify-between">
+                    <h3 class="text-black text-base font-[700]">Bamboo Stand</h3>
+                    <h4 class="text-dark-cyan text-base font-[500] mt-2 md:mt-0">Pledge $25 or more</h4>
+                </div>
+
+                <p class="text-dark-gray text-[0.95rem] font-[500] mt-5" style="line-height: 1.6;">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you'll be added to a special Backer member list.</p>
+
+                <section class="w-full flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="flex items-center space-x-2 mt-6">
+                        <span class="text-black text-4xl font-[700]">101</span>
+                        <span class="text-dark-gray text-[1rem] font-[500]">left</span>
+                    </div>
+
+                    <button class="select-reward w-[65%] h-[3.2rem] text-white text-sm bg-moderate-cyan font-[500] rounded-full mt-6 md:w-[170px] hover:bg-dark-cyan">Select Reward</button>
+                </section>
+            </div>
+
+            <!--Black Edition stand section-->
+            <div class="w-full flex flex-col p-6 border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg">
+                <div class="w-full flex flex-col md:flex-row md:justify-between">
+                    <h3 class="text-black text-base font-[700]">Black Edition Stand</h3>
+                    <h4 class="text-dark-cyan text-base font-[500] mt-2 md:mt-0">Pledge $75 or more</h4>
+                </div>
+
+                <p class="text-dark-gray text-[0.95rem] font-[500] mt-5" style="line-height: 1.6;">You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+
+                <section class="w-full flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="flex items-center space-x-2 mt-6">
+                        <span class="text-black text-4xl font-[700]">64</span>
+                        <span class="text-dark-gray text-[1rem] font-[500]">left</span>
+                    </div>
+
+                    <button class="select-reward w-[65%] h-[3.2rem] text-white text-sm bg-moderate-cyan font-[500] rounded-full mt-6 md:w-[170px] hover:bg-dark-cyan">Select Reward</button>
+                </section>
+            </div>
+
+            <!--Mahogany special edition (opacity is low because it is out of stock)-->
+            <div class="w-full flex flex-col p-6 border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg opacity-40">
+                <div class="w-full flex flex-col md:flex-row md:justify-between">
+                    <h3 class="text-black text-base font-[700]">Mahogany Special Edition</h3>
+                    <h4 class="text-dark-cyan text-base font-[500] mt-2 md:mt-0">Pledge $200 or more</h4>
+                </div>
+
+                <p class="text-dark-gray text-[0.95rem] font-[500] mt-5" style="line-height: 1.6;">You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+
+                <section class="w-full flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div class="flex items-center space-x-2 mt-6">
+                        <span class="text-black text-4xl font-[700]">0</span>
+                        <span class="text-dark-gray text-[1rem] font-[500]">left</span>
+                    </div>
+
+                    <button class="w-[65%] h-[3.2rem] text-white text-sm bg-dark-gray font-[500] rounded-full mt-6 md:w-[170px]">Out of Stock</button>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!--Selection Modal-->
+    <section class="hidden fixed w-[100vw] h-[100vh] left-0 top-0 z-10 bg-[rgba(0,0,0,0.4)] overflow-y-auto" id="selection-modal">
+        <!--Main modal content-->
+        <div class="flex flex-col bg-white rounded-lg mt-[7rem] mx-8 md:mx-auto md:w-[70%!important] lg:w-[50%!important]" style="width: calc(100% - 4rem)">
+
+            <!--Modal heading section-->
+            <div class="flex justify-between items-center mx-4 mt-4 md:mx-6 md:mt-6">
+                <h2 class="text-black text-lg font-[700]">Back this Project</h2>
+
+                <img src="./assets/images/icon-close-modal.svg" alt="" class="h-4 cursor-pointer" id="icon-close-modal">
+
+                <script>
+                    //This script changes the icon-close modal to the darker one on hover
+                    const iconCloseModal = document.getElementById("icon-close-modal")
+                    
+                    iconCloseModal.addEventListener("mouseenter" , ()=> {
+                        iconCloseModal.src = "./assets/images/icon-close-modal-dark.svg"
+                    })
+
+                    iconCloseModal.addEventListener("mouseleave" , ()=> {
+                        iconCloseModal.src = "./assets/images/icon-close-modal.svg"
+                    })
+                </script>
+            </div>
+
+            <p class="text-dark-gray text-[0.95rem] font-[500] mx-4 mt-4 md:mx-6 md:mt-6" style="line-height: 1.6;">Want to support us in bringing Mastercraft Bamboo Monitor Riser out in the world?</p>
+
+            <!--Selection types section-->
+
+            <!--No pledge-->
+            <div class="flex flex-col border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg mx-4 mt-4 selection-type md:mx-6 md:mt-6">
+                <div class="flex items-center space-x-6 mx-4 mt-6">
+                    <input type="radio" name="selection-type" id="radio1" class="radio h-4 w-4 cursor-pointer">
+
+                    <p class="text-black text-[0.9rem] font-[700] hover:text-dark-cyan">Pledge with no reward</p>
+                </div>
+
+                <p class="text-dark-gray text-[0.9rem] font-[500] mx-4 my-7 md:ml-14 md:mt-4" style="line-height: 1.6;">Choose to support us without a reward if you simply believe in our project. As a backer, you will be signed up to receive product updates via email.</p>
+
+                <!-- For users to continue after selecting no pledge-->
+                <section class="hidden flex-col enter-pledge w-full border-t-[1.5px] border-[rgba(0,0,0,0.15)]">
+
+                    <!--Continue button-->
+                    <button class="w-[60%] bg-moderate-cyan text-white text-[0.95rem] font-[500] rounded-full h-12 mx-auto mt-5 mb-6 continue-btn md:w-[45%]">
+                        Continue
+                    </button>
+                </section>
+            </div>
+
+            <!--Bamboo stand-->
+            <div class="flex flex-col border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg mx-4 mt-4 selection-type md:mx-6 md:mt-6">
+                <div class="flex items-center space-x-6 mx-4 mt-6">
+                    <input type="radio" name="selection-type" id="radio2" class="radio h-4 w-4 cursor-pointer">
+
+                    <div class="w-[100%] flex flex-col space-y-1 md:flex-row md:items-center md:space-y-0">
+                        <p class="text-black text-[0.9rem] font-[700] hover:text-dark-cyan">Bamboo Stand</p>
+
+                        <p class="text-dark-cyan text-[0.95rem] font-[500] mt-2 md:mt-0 md:ml-4 md:font-[700]">Pledge $25 or more</p>
+
+                        <div class="hidden items-center space-x-2 mx-4 md:flex md:ml-auto">
+                            <span class="text-black text-3xl font-[700]">101</span>
+                            <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-dark-gray text-[0.9rem] font-[500] mx-4 mt-5 md:ml-14 md:mb-6" style="line-height: 1.6;">You get an ergonomic stand made of natural bamboo. You've helped us launch our promotional campaign, and you’ll be added to a special Backer member list.</p>
+
+                <div class="flex items-center space-x-2 mx-4 my-6 md:hidden">
+                    <span class="text-black text-3xl font-[700]">101</span>
+                    <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                </div>
+
+                <!--Enter your pledge section -- Hidden until the radio is checked-->
+                <section class="hidden flex-col enter-pledge border-t-[1.5px] border-[rgba(0,0,0,0.15)] md:flex-row md:items-center md:justify-between md:mx-4">
+                    <h4 class="text-dark-gray text-[0.9rem] font-[500] mx-4 mt-5 text-center md:mx-0 md:mt-0" style="line-height: 1.6;">Enter your pledge</h4>
+
+                    <!--Input for pledge amount and continue button-->
+                    <div class="flex space-x-5 mx-4 mt-5 mb-6 md:mx-0 md:my-5">
+                        <div class="pledge-amount-con flex w-[40%] border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-full space-x-3 md:w-[110px]">
+                            <div class="w-[30%] h-full flex justify-end items-center">
+                                <p class="text-dark-gray text-[0.9rem] font-[500]">$</p>
+                            </div>
+
+                            <input type="text" name="pledge-amount" class="pledge-amount w-[70%] h-full outline-0 bg-transparent flex items-center text-black text-[0.9rem] font-[700]" value="25">
+                        </div>
+
+                        <button class="w-[60%] bg-moderate-cyan text-white text-[0.95rem] font-[500] rounded-full h-12 continue-btn md:w-[140px]">
+                            Continue
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!--Black Edition stand-->
+            <div class="flex flex-col border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg mx-4 mt-4 selection-type md:mx-6 md:mt-6">
+                <div class="flex items-center space-x-6 mx-4 mt-6">
+                    <input type="radio" name="selection-type" id="radio3" class="radio h-4 w-4 cursor-pointer">
+
+                    <div class="w-[100%] flex flex-col space-y-1 md:flex-row md:items-center md:space-y-0">
+                        <p class="text-black text-[0.9rem] font-[700] hover:text-dark-cyan">Black Edition Stand</p>
+
+                        <p class="text-dark-cyan text-[0.95rem] font-[500] mt-2 md:mt-0 md:ml-4 md:font-[700]">Pledge $75 or more</p>
+
+                        <div class="hidden items-center space-x-2 mx-4 md:flex md:ml-auto">
+                            <span class="text-black text-3xl font-[700]">64</span>
+                            <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-dark-gray text-[0.9rem] font-[500] mx-4 mt-5 md:ml-14 md:mb-6" style="line-height: 1.6;"> You get a Black Special Edition computer stand and a personal thank you. You'll be added to our Backer member list. Shipping is included.</p>
+
+                <div class="flex items-center space-x-2 mx-4 my-6 md:hidden">
+                    <span class="text-black text-3xl font-[700]">64</span>
+                    <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                </div>
+
+                <!--Enter your pledge section -- Hidden until the radio is checked-->
+                <section class="hidden flex-col enter-pledge border-t-[1.5px] border-[rgba(0,0,0,0.15)] md:flex-row md:items-center md:justify-between md:mx-4">
+                    <h4 class="text-dark-gray text-[0.9rem] font-[500] mx-4 mt-5 text-center" style="line-height: 1.6;">Enter your pledge</h4>
+
+                    <!--Input for pledge amount and continue button-->
+                    <div class="flex space-x-5 mx-4 mt-5 mb-6 md:mx-0 md:my-5">
+                        <div class="pledge-amount-con flex w-[40%] border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-full space-x-3 md:w-[110px]">
+                            <div class="w-[30%] h-full flex justify-end items-center">
+                                <p class="text-dark-gray text-[0.9rem] font-[500]">$</p>
+                            </div>
+
+                            <input type="text" name="pledge-amount" class="pledge-amount w-[70%] h-full outline-0 bg-transparent flex items-center text-black text-[0.9rem] font-[700]" value="75">
+                        </div>
+
+                        <button class="w-[60%] bg-moderate-cyan text-white text-[0.95rem] font-[500] rounded-full h-12 continue-btn md:w-[140px]">
+                            Continue
+                        </button>
+                    </div>
+                </section>
+            </div>
+
+            <!--Mahogany special edition-->
+            <div class="flex flex-col border-[1.5px] border-[rgba(0,0,0,0.15)] rounded-lg mx-4 mt-4 mb-4 opacity-40 selection-type md:mx-6 md:mt-6 md:mb-6">
+                <div class="flex items-center space-x-6 mx-4 mt-6">
+                    <input type="radio" name="selection-type" id="radio4" class="radio h-4 w-4 cursor-pointer">
+
+                    <div class="w-[100%] flex flex-col space-y-1 md:flex-row md:items-center md:space-y-0">
+                        <p class="text-black text-[0.9rem] font-[700]">Mahogany Special Edition</p>
+
+                        <p class="text-dark-cyan text-[0.95rem] font-[500] mt-2 md:mt-0 md:ml-4 md:font-[700]">Pledge $200 or more</p>
+
+                        <div class="hidden items-center space-x-2 mx-4 md:flex md:ml-auto">
+                            <span class="text-black text-3xl font-[700]">0</span>
+                            <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-dark-gray text-[0.9rem] font-[500] mx-4 mt-5 md:ml-14 md:mb-6" style="line-height: 1.6;"> You get two Special Edition Mahogany stands, a Backer T-Shirt, and a personal thank you. You’ll be added to our Backer member list. Shipping is included.</p>
+
+                <div class="flex items-center space-x-2 mx-4 my-6 md:hidden">
+                    <span class="text-black text-3xl font-[700]">0</span>
+                    <span class="text-dark-gray text-[0.95rem] font-[500]">left</span>
+                </div>
+            </div>
+        </div>
+
+        <!--Script to ensure only numbers are inputed in pledge amount input-->
+        <script>
+            const pledgeAmountInputs = document.getElementsByClassName("pledge-amount")
+            const pledgeAmountCons = document.getElementsByClassName("pledge-amount-con")
+
+            for (let i = 0; i < pledgeAmountInputs.length; i++) {
+                pledgeAmountInputs[i].addEventListener("input" , function() {
+                    const validPledgepattern =  /^[0-9+]*$/;
+
+                    if(!validPledgepattern.test(pledgeAmountInputs[i].value)){
+                        pledgeAmountInputs[i].value = pledgeAmountInputs[i].value.replace(/[^0-9+]/g, '');
+                    }
+                })
+                
+                pledgeAmountInputs[i].addEventListener("focus" , ()=> {
+                    pledgeAmountCons[i].classList.remove("border-[rgba(0,0,0,0.15)]")
+                    pledgeAmountCons[i].classList.add("border-dark-cyan")
+                })
+
+                pledgeAmountInputs[i].addEventListener("blur" , ()=> {
+                    pledgeAmountCons[i].classList.add("border-[rgba(0,0,0,0.15)]")
+                    pledgeAmountCons[i].classList.remove("border-dark-cyan")
+                })
+            }
+        </script>
+
+        <!--Script for radio inputs-->
+        <script>
+            const enterPledges = document.getElementsByClassName("enter-pledge")
+            const selectionTypes = document.getElementsByClassName("selection-type")
+            const selectionRadios = document.querySelectorAll('input[name="selection-type"]')
+            
+            //Checks a radio input if its parent div is clicked
+            //This is for easy input for users
+            for (let i = 0; i < selectionTypes.length ; i++) {
+                selectionTypes[i].addEventListener("click" , ()=> {
+                    selectionRadios[i].checked = true
+
+                    //This makes the border dark cyan and bigger to depict selected one
+                    //exept the 4th one that is unavailable
+                    if(i != 3){
+                        selectionTypes[i].classList.remove("border-[rgba(0,0,0,0.15)")
+                        selectionTypes[i].classList.remove("border-[1.5px]")
+                        selectionTypes[i].classList.add("border-dark-cyan")
+                        selectionTypes[i].classList.add("border-[2px]")
+                    }
+
+                    excludedselectionTypes = Array.from(selectionTypes).filter(function (element) {
+                        return element !== selectionTypes[i]
+                    })
+
+                    //removes the dark cyan border from unselected divs
+                    for (let i = 0; i < excludedselectionTypes.length; i++) {
+                        excludedselectionTypes[i].classList.add("border-[rgba(0,0,0,0.15)")
+                        excludedselectionTypes[i].classList.add("border-[1.5px]")
+                        excludedselectionTypes[i].classList.remove("border-dark-cyan")
+                        excludedselectionTypes[i].classList.remove("border-[2px]")
+                    }
+                })
+            }
+
+            //This loop affects only available selections 
+            //It shows the enter pledge section when the radio is checked
+            //I used this method because I couldn't use if(radio.checked) method
+            for (let i = 0; i < 3; i++) {
+                selectionTypes[i].addEventListener("click" , ()=> {
+                    if(enterPledges[i].classList.contains("hidden")){
+                        excludedenterPledges = Array.from(enterPledges).filter(function (element) {
+                            return element !== enterPledges[i]
+                        })
+
+                        enterPledges[i].classList.remove("hidden")
+                        enterPledges[i].classList.add('flex')
+
+                        for (let i = 0; i < excludedenterPledges.length; i++) {
+                            excludedenterPledges[i].classList.remove("flex")
+                            excludedenterPledges[i].classList.add("hidden")                            
+                        }
+                    }
+                })
+            }
+
+            //This two eventListeners makes enterPledge sections hidden when other selections are clicked
+            /*
+            selectionTypes[0].addEventListener("click" , ()=> {
+                for (let i = 0; i < enterPledges.length; i++) {
+                    enterPledges[i].classList.remove("flex")
+                    enterPledges[i].classList.add('hidden')
+                }
+            })*/
+
+            selectionTypes[3].addEventListener("click" , ()=> {
+                for (let i = 0; i < enterPledges.length; i++) {
+                    enterPledges[i].classList.remove("flex")
+                    enterPledges[i].classList.add('hidden')
+                }
+            })
+
+        </script>
+
+
+
+
+        <!--------------Modal Scripts--------------->
+        <script>
+            const backThisProject = document.getElementById("back-this-project")
+            const selectionModal = document.getElementById("selection-modal")
+            const selectRewardBtns = document.getElementsByClassName("select-reward")
+
+            //Open Modal
+            backThisProject.addEventListener("click" , ()=> {
+                selectionModal.classList.remove("hidden")
+                selectionModal.classList.add("block")
+            })
+
+            //Close Modal
+            iconCloseModal.addEventListener("click" , ()=> {
+                selectionModal.classList.remove("block")
+                selectionModal.classList.add("hidden")
+            })
+
+            //Select Reward scripts
+            for (let i = 0; i < selectRewardBtns.length; i++) {
+                selectRewardBtns[i].addEventListener("click" , ()=> {
+                    //Open Modal first
+                    selectionModal.classList.remove("hidden")
+                    selectionModal.classList.add("block")
+
+                    //Check Radio of selection
+                    selectionRadios[i + 1].checked = true
+
+                    //Open Enter Pledge section of selection
+                    enterPledges[i + 1].classList.remove("hidden")
+                    enterPledges[i + 1].classList.add("flex")
+
+                    //Take window to the particular selection div
+                    selectionTypes[i + 1].scrollIntoView()
+
+                    //makes the selection type have cyan border
+                    selectionTypes[i + 1].classList.remove("border-[rgba(0,0,0,0.15)")
+                    selectionTypes[i + 1].classList.remove("border-[1.5px]")
+                    selectionTypes[i + 1].classList.add("border-dark-cyan")
+                    selectionTypes[i + 1].classList.add("border-[2px]")
+                })                
+            }
+        </script>
+
+    </section>
+
+
+
+
+    <!------------------  Thanks for your support modal ---------------------->
+    <section class="hidden fixed w-[100vw] h-[100vh] left-0 top-0 z-10 bg-[rgba(0,0,0,0.4)] overflow-y-auto md:items-center md:justify-center" id="thanks-modal">
+
+        <!--- Main content--->
+        <div class="flex flex-col bg-white rounded-lg mt-[7rem] mx-8 md:mx-auto md:w-[45%!important] md:mt-0 lg:w-[30%!important]" style="width: calc(100% - 4rem)">
+            <img src="./assets/images/icon-check.svg" alt="" class="h-14 mx-auto mt-4">
+
+            <h2 class="text-black text-lg font-[700] text-center mx-4 mt-4 md:mt-7">Thanks for your support!</h2>
+
+            <p class="text-dark-gray text-[0.9rem] font-[500] text-center mx-4 mt-4 md:mx-6 md:leading-[1.8]">  Your pledge brings us one step closer to sharing Mastercraft Bamboo Monitor Riser worldwide. You will get an email once our campaign is completed.</p>
+
+            <a href="./index.html" class="mx-auto">
+                <button class="bg-moderate-cyan text-white text-[0.95rem] font-[500] rounded-full w-28 h-12 mt-5 mb-6 md:mt-7 md:mb-8 hover:bg-dark-cyan" id="got-it-btn">Got it!</button>
+            </a>
+        </div>
+
+
+
+        <!-- Scripts for Thanks for your support section-->
+        <script>
+            const continueBtns = document.getElementsByClassName("continue-btn")
+            const thanksModal = document.getElementById("thanks-modal")
+            const gotItBtn= document.getElementById("got-it-btn")
+            var desktopWidth = window.matchMedia("(min-width:700px)")
+
+
+            //Continue buttons remove selection modal and display the thanks for your support modal
+            for (let i = 0; i < continueBtns.length; i++) {
+                continueBtns[i].addEventListener("click" , ()=> {                    
+                    if(desktopWidth.matches){
+                        //Display thanks Modal for desktop
+                        thanksModal.classList.remove("hidden")
+                        thanksModal.classList.add("flex")
+
+                        //Remove selection Modal for desktop
+                        selectionModal.classList.remove("block")
+                        selectionModal.classList.add("hidden")
+                    }else{
+                        //Display thanks Modal for mobile
+                        thanksModal.classList.remove("hidden")
+                        thanksModal.classList.add("block")
+
+                        //Remove selection Modal for mobile
+                        selectionModal.classList.remove("block")
+                        selectionModal.classList.add("hidden")
+                    }
+
+                    //Uncheck every radio button before displaying
+                    for (let k = 0; k < selectionRadios.length; k++) {
+                        selectionRadios[k].checked = false
+                    }
+                })
+            }
+
+
+            /////This script ensures a smooth responsiveness of the thanks modal
+            /////for min-width of 700px and below.
+            /////for min-width of 700px, it must be flex so it can be centered
+            /////but it can be block for 7rem margin-top
+            function thanksModalResp(e) {
+                if(e.matches && thanksModal.classList.contains("block")){
+                    thanksModal.classList.remove("block")
+                    thanksModal.classList.add("flex")
+                }else{
+                    thanksModal.classList.remove("flex")
+                    thanksModal.classList.add("block")
+                }
+            }
+
+            desktopWidth.addListener(thanksModalResp)
+            thanksModalResp(desktopWidth)
+            
+            //this makes the no-pledge section show the thanks modal onclick
+            /*
+            selectionTypes[0].addEventListener("click" , ()=> {
+                //Display thanks Modal
+                thanksModal.classList.remove("hidden")
+                thanksModal.classList.add("block")
+
+                //Remove selection Modal
+                selectionModal.classList.remove("block")
+                selectionModal.classList.add("hidden")
+            })*/
+        </script>
+    </section>
+
+</body>
